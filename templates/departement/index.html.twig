@@ -13,6 +13,13 @@
 			{{ data.LiveDataByDepartement.0.date }}</p>
 	</div>
 
+	<div class="card mb-5 shadow-lg">
+		<div class="card-body">
+			{{ render_chart(chart) }}
+		</div>
+	</div>
+
+
 	<div class="row text-center">
 		<div class="col">
 			<div class="card mb-4 shadow-sm mt-4">
@@ -27,7 +34,7 @@
 		<div class="col">
 			<div class="card mb-4 shadow-sm mt-4">
 				<div class="card-header">
-					<h4 class="my-0 fw-normal">Nombre de personnes réa</h4>
+					<h4 class="my-0 fw-normal">Nombre de personnes en réanimation</h4>
 				</div>
 				<div class="card-body">
 					<h1 class="card-title pricing-card-title">{{ data.LiveDataByDepartement.0.reanimation }}</h1>
@@ -37,7 +44,7 @@
         <div class="col">
 			<div class="card mb-4 shadow-sm mt-4">
 				<div class="card-header">
-					<h4 class="my-0 fw-normal">Nombre de personnes décès</h4>
+					<h4 class="my-0 fw-normal">Nombre de personnes décédés</h4>
 				</div>
 				<div class="card-body">
 					<h1 class="card-title pricing-card-title">{{ data.LiveDataByDepartement.0.deces }}</h1>

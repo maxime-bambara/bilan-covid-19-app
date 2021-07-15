@@ -28,6 +28,11 @@ class CallApiService
         return $this->getApi('LiveDataByDepartement?Departement=' . $departement);
     }
 
+    public function getAllDataByDate($date): array
+    {
+        return $this->getApi('AllDataByDate?date=' . $date);
+    }
+
     private function getApi(string $var)
     {
         $response = $this->client->request(
