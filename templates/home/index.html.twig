@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bilan covid{% endblock %}
+
+{% block body %}
+	<div class="album py-5" id="france">
+		<div class="container">
+            <h1 class="mb-5 text-center">Les chiffres du COVID-19 en France</h1>
+
+			<div class="row">
+			    <div class="col-sm-12 col-md-6 col-lg-4 mt-3 h-100">
+					<div class="card shadow-sm">
+						<div class="card-body">
+							<h5 class="card-title">Source des données</h5>
+							<p class="card-text">{{ data.FranceGlobalLiveData.0.sourceType }}</p>
+						</div>
+                        <h3 class="card-footer bg-secondary text-light mx-2 rounded-pill text-center">{{ data.FranceGlobalLiveData.0.date }}</h3>
+					</div>
+				</div>
+
+				<div class="col-sm-12 col-md-6 col-lg-4 mt-3 h-100">
+					<div class="card shadow-sm h-100">
+						<div class="card-body">
+							<h5 class="card-title">Nombre d’hospitalisations</h5>
+							<p class="card-text">Nombre de personnes actuellement hospitalisée</p>
+						</div>
+                        <h3 class="card-footer bg-primary text-light mx-2 rounded-pill text-center">{{ data.FranceGlobalLiveData.0.hospitalises }}</h3>
+					</div>
+				</div>
+
+                <div class="col-sm-12 col-md-6 col-lg-4 mt-3 h-100">
+					<div class="card shadow-sm">
+						<div class="card-body">
+							<h5 class="card-title">Nombre de Réa</h5>
+							<p class="card-text">Nombre de personnes actuellement en réanimation</p>
+						</div>
+                        <h3 class="card-footer bg-warning text-light mx-2 rounded-pill text-center">{{ data.FranceGlobalLiveData.0.reanimation }}</h3>
+					</div>
+				</div>
+
+                <div class="col-sm-12 col-md-6 col-lg-4 mt-3 h-100">
+					<div class="card shadow-sm">
+						<div class="card-body">
+							<h5 class="card-title">Nombre total de décès</h5>
+							<p class="card-text">Nombre de personnes décédés depuis le début de la pandémie</p>
+						</div>
+                        <h3 class="card-footer bg-danger text-light mx-2 rounded-pill text-center">{{ data.FranceGlobalLiveData.0.deces}}</h3>
+					</div>
+				</div>
+
+                <div class="col-sm-12 col-md-6 col-lg-4 mt-3 h-100">
+					<div class="card shadow-sm">
+						<div class="card-body">
+							<h5 class="card-title">Nombre totale de guéris</h5>
+							<p class="card-text">Nombre de personnes guéris depuis le début de la pandémie</p>
+						</div>
+                        <h3 class="card-footer bg-success text-light mx-2 rounded-pill text-center">{{ data.FranceGlobalLiveData.0.gueris }}</h3>
+					</div>
+				</div>
+
+
+            </div>    
+		</div>
+	</div>
+
+    <div class="album py-5" id="departement">
+		<div class="container">
+            <h1 class="mb-5">Les chiffres du COVID-19 par département</h1>
+
+			<div class="row">
+				{% for departement in departements.allLiveFranceData %}
+					<div class="col-sm-12 col-md-6 col-lg-3 mt-3">
+						<div class="card shadow-lg h-100 m-2">
+							<div class="card-body">
+								<h5 class="card-title">{{ departement.nom }}</h5>
+								<p class="card-text">Actuellement hospitalisée<span class="badge bg-secondary text-light ml-3">{{ departement.hospitalises }}</span></p>
+								<p class="card-text">Actuellement en réanimation<span class="badge bg-secondary text-light ml-1">{{ departement.reanimation }}</span></p>
+								<a href="{{ path('app_departement', {'departement': departement.nom }) }}" class="btn btn-secondary" role="button" aria-pressed="true">Plus de chiffres</a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+
+
+{% endblock %}
